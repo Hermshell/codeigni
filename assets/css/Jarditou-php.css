@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+#caca {
+	
+	margin-top:130px;
+	
+	
+}
+table {
+	
+	margin-top:60px;
+}
+
+form {margin-top:60px;}
+
+#modif{margin-right:15px;}
+#titre{margin-top:60px;}
+#test{margin-top:100px;}
+
+#panier{padding-left:100px}
+.inline{
+	white-space:nowrap;
+}
+
+.dropdownpanier{
+	background-color:red;
+}
