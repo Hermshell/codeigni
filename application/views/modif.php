@@ -3,7 +3,7 @@ $date=date('Y-m-d')?>
 <body>
 	<div class="container">
 
-  	
+  <h1 class="text-center sanos">Modification du produit</h1>
   <?php echo form_open_multipart('produits/modif/'.$produits->pro_id); ?>
   
    <!--ID-->

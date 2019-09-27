@@ -1,154 +1,142 @@
-<?php require("entete.php");?>
+<?php require("entete.php"); ?>
+
 <body>
-    
-
-<h1>Mon panier</h1>
-	
-<?php 
-	
-$total = 0;
 
 
-	
-foreach ($this->session->panier as $produit)
-	
-{ 
-	
-?>
-	
-        <tr>
-	
-            <td><?= $produit['pro_libelle']; ?></td>
-	
-            <td><?= str_replace('.', ',', $produit['pro_prix']); ?> <sup>€</sup></td>
-	        
-            <td>
-	
-                <div class="panier_qte">
-	
-                <div class="panier_qte_valeur">
-	
-                        <a href="<?= site_url('produits/qtemoins/'.$produit['pro_id']); ?>" type="button" role="button"> - </a>
-	
-                        <?= $produit['pro_qte'];
-                        ?>     
-	
-                        <a href="<?= site_url('produits/qteplus/'.$produit['pro_id']); ?>" type="button" role="button">+</a>
-	
-                </div>
-	
-                </div> 
-	
-            </td>
-	
-            <td><?= str_replace('.',',',($produit['pro_qte']*$produit['pro_prix'])); ?> <sup>€</sup></td>    
-	
-        <td>
-	
-            <?php 
-	
-                $total += $produit['pro_qte']*$produit['pro_prix']; ?>
-	
-                <a href="<?= site_url('produits/effaceProduit/'.$produit['pro_id']); ?>">Suppimer</a>            
-	
-</td>
-	
-</tr>
-	
-<?php
-	
-}
-	
-?>
- 
-	
-<?php 
+    <h1 class="text-center">Mon panier</h1>
+    <br>
+    <hr>
 
-if ($this->session->panier!=null) 
-	
-{ 
-	
-    ?>
-	
-    <div class="row">
-	
-    <div class="col"> 
-	
-    <table>
-	
-        <thead>
-	
-            <tr>
-	
-                <th>Produit</th>
-	
-                <th>Prix</th>
-	
-                <th>Quantité</th>
-	
-                <th>Prix total</th>
-	
-                <th>&nbsp;</th>    
-	
-            </tr>    
-	
-        </thead>
-	
-        <tbody>
-	
-        <?php 
-	
-        
-	
-        // ici le code pour récupérer les produits et les incrémenter ...
-	
+    <?php
+
+    $total = 0;
+$sousajout=false;
+$this->session->sousajout=$sousajout;
+var_dump($sousajout);
+
+
+    foreach ($this->session->panier as $produit) {
+
         ?>
-	
-        </tbody>
-	
-    </table>
-	
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                    <img class="border border-dark rounded-circle" src="<?= base_url('assets/images/') . $produit['pro_id'] . '.' . $produit['pro_photo'] ?>" height="150px" width="150px">
+                    <div class="panier_qte ml-5">
+
+
+
+                        <a href="<?= site_url('produits/qtemoins/' . $produit['pro_id']); ?>" type="button" role="button"> - </a>
+
+                        <?= $produit['pro_qte'];
+                            ?>
+
+                        <a href="<?= site_url('produits/qteplus/' . $produit['pro_id']); ?>" type="button" role="button">+</a>
+
+
+                    </div>
+
+                </div>
+                <div class="col-5">
+                    <div class="row">
+                        <h3> <?= $produit['pro_libelle']; ?></h3>
+                    </div>
+                </div>
+
+                <div class="col-2">
+
+                    <p class="prix">Prix : <?= str_replace('.', ',', $produit['pro_prix']); ?> <sup>€</sup>
+
+
+
+
+                        <div class="row">
+
+                            <p>Pour <?= $produit['pro_qte'] ?> articles le prix total est de: <?= str_replace('.', ',', ($produit['pro_qte'] * $produit['pro_prix'])); ?> <sup>€</sup>
+
+                        </div>
+                </div>
+<div class="col-2">
+                <?php
+
+                    $total += $produit['pro_qte'] * $produit['pro_prix']; ?>
+
+
+                <a href="<?= site_url('produits/effaceProduit/' . $produit['pro_id']); ?>">Suppimer</a>
     </div>
-	
-    <div>
-	
-        <div>
-	
-            <h3>Récapitulatif</h3>
-	
-            <div>
-	
-                <h5>TOTAL : <?= str_replace('.',',',$total); ?> <sup>€</sup></h5>
-	
-                <a href="<?= site_url("produits/efface"); ?>" >Supprimer le panier</a> - 
-	
-                <a href="<?= site_url("produits/catalogue"); ?>">Retour boutique</a>
-	
             </div>
-	
+            <hr>
+            </div>
+        <?php
+
+        }
+
+        ?>
+        
+        <div class="container-fluid">
+        <div class="mr-auto"></div>
+        <div class="ml-auto">
+            <div class="row">
+                <div class="col-1 offset-9">
+                    <?php
+
+                    if ($this->session->panier != null) {
+
+                        ?>
+
+                        <div class="row">
+
+
+                            <?php
+
+
+
+                                // ici le code pour récupérer les produits et les incrémenter ...
+
+                                ?>
+
+
+
+                        </div>
+
+                        <div>
+
+                            <div>
+
+                                <h2>Récapitulatif</h2>
+
+                                <div>
+
+                                    <h5>TOTAL : <?= str_replace('.', ',', $total); ?> <sup>€</sup></h5>
+
+                                    <a href="<?= site_url("produits/efface"); ?>">Supprimer le panier</a> -
+
+                                    <a href="<?= site_url("produits/catalogue"); ?>">Retour boutique</a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                </div>
+
+            <?php
+
+            } else {
+
+                ?>
+
+                <div class="alert alert-danger">Votre panier est vide. Pour le remplir, vous pouvez visiter notre <a href="<?= site_url("produits/catalogue"); ?>">boutique</a>.</div>
+
+            <?php
+
+            }
+
+
+            ?>
+            </div>
         </div>
-	
-    </div>
-	
-    </div>
-	
-    <?php 
-	
-    } 
-	
-    else 
-	
-    { 
-	
-    ?>
-	
-    <div class="alert alert-danger">Votre panier est vide. Pour le remplir, vous pouvez visiter notre <a href="<?= site_url("produits/catalogue"); ?>">boutique</a>.</div>
-	
-    <?php 
-	
-} 
-    
-	
-?>   
-</body>
-</html>
+        </div>
+        <?php require('pieddepage.php');?>

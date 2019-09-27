@@ -4,7 +4,7 @@ $date=date('Y-m-d');
 
 
 <body>
-    
+<h1 class="text-center sanos">Ajout produit</h1>
     <div class="container" id="test">
 
   
@@ -13,7 +13,7 @@ $date=date('Y-m-d');
 
      
 
-     <label for="pro_cat_id" class="text-success">Catégories </label>
+     <label for="pro_cat_id" class="text-success sanos">Catégories </label>
   <select name="pro_cat_id" class="form-control">
      <?php foreach($categories as $row)
      {
@@ -25,17 +25,17 @@ $date=date('Y-m-d');
 
 <!--Références-->
 
-    <label for="pro_ref" class="text-success">Références du produit</label>
+    <label for="pro_ref" class="text-success sanos">Références du produit</label>
     
     <img src="<?=base_url("assets/images/flower.png")?>" height="30px" width="30px">
     
     
     <input type="text" class="form-control" name="pro_ref" value="<?= set_value('pro_ref')?>"><br>
-    <p><?= form_error('pro_ref');?>
+    <p class="text-danger"><?= form_error('pro_ref');?></p>
 
     <!--Nom du produit-->
 
-<label for="pro_libelle" class="text-success">Nom du produit</label>
+<label for="pro_libelle" class="text-success sanos">Nom du produit</label>
 
 
 <img src="<?=base_url("assets/images/flower.png")?>" height="30px" width="30px"> 
@@ -46,7 +46,7 @@ $date=date('Y-m-d');
 
 <!--Description-->
 
-<label for="pro_description" class="text-success">Description du produit</label>
+<label for="pro_description" class="text-success sanos">Description du produit</label>
 
 <img src="<?=base_url("assets/images/flower.png")?>" height="30px" width="30px">
 
@@ -55,7 +55,7 @@ $date=date('Y-m-d');
 <p><?= form_error('pro_description');?>
 <!--Prix du produit-->
 
-<label for="pro_prix" class="text-success">Prix du produit</label>
+<label for="pro_prix" class="text-success sanos">Prix du produit</label>
 
 <img src="<?=base_url("assets/images/flower.png")?>" height="30px" width="30px"> 
 
@@ -64,7 +64,7 @@ $date=date('Y-m-d');
 
 <!--Unité en stock-->
 
-<label for="pro_stock" class="text-success">Nombre d'unités en stock</label>
+<label for="pro_stock" class="text-success sanos">Nombre d'unités en stock</label>
 
 <img src="<?=base_url("assets/images/flower.png")?>" height="30px" width="30px">
 
@@ -73,7 +73,7 @@ $date=date('Y-m-d');
 
 <!--Couleur-->
 
-<label for="pro_couleur" class="text-success">Couleur</label>
+<label for="pro_couleur" class="text-success sanos">Couleur</label>
 
 <img src="<?=base_url("assets/images/flower.png")?>" height="30px" width="30px">
 
@@ -82,7 +82,7 @@ $date=date('Y-m-d');
 
 <!--Photo-->
 
-<label class="text-success" for="pro_photo">Photos</label>
+<label class="text-success sanos" for="pro_photo">Photos</label>
 
 <img src="<?=base_url("assets/images/flower.png")?>" height="30px" width="30px">
 
@@ -90,7 +90,7 @@ $date=date('Y-m-d');
 
 <!--En stock oui ou non-->
 
-<label class="text-success"  for="success" id="radio">Bloquer le produit à la production</label>
+<label class="text-success sanos"  for="success" id="radio">Bloquer le produit à la production</label>
 
 <img src="<?=base_url("assets/images/flower.png")?>" height="30px" width="30px"><br>
 
@@ -100,11 +100,11 @@ $date=date('Y-m-d');
   <br> 
 
   <!--Date-->
-  <input name="pro_d_ajout" value="<?=$date?>" hidden> 
+  <input name="pro_d_ajout sanos" value="<?=$date?>" hidden> 
 
   <!--Boutton valider-->
-<input type="submit" value="valider" class='btn btn-outline-success' id="valider">
-<input type="reset" value="annuler" class='btn btn-outline-warning'>
+<input type="submit" value="valider" class='btn btn-outline-success sanos' id="valider">
+<input type="reset" value="annuler" class='btn btn-outline-warning sanos'>
     </div> 
     
     

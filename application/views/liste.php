@@ -7,7 +7,7 @@
 	
 <body>
 
-<h1>Liste des produits</h1>
+<h1 class="text-center sanos">Liste des produits</h1>
 	
  <div class="container">
 <!-- LES THEADS -->
@@ -15,17 +15,29 @@
     <thead>
         <tr>
  <th class='table-success'></th>
- <th class='table-success'>PHOTO</th>
- <th class='table-success'>ID</th>
- <th class='table-success'>Références</th>
- <th class='table-success'>Libellé</th>
- <th class='table-success'>Prix</th>
- <th class='table-success'>Stock</th>
- <th class='table-success'>Couleur</th>
- <th class='table-success'>Ajout</th>
- <th class='table-success'>Modif</th>
- <th class='table-success'>Bloqué</th>
- <th class='table-success'>Actions</th>
+ <th class='table-success sanos'>PHOTO</th>
+ <th class='table-success sanos'>ID</th>
+ <th class='table-success sanos'>Références</th>
+ <th class='table-success sanos'>Libellé</th>
+ <th class='table-success sanos'>Prix</th>
+ <th class='table-success sanos'>Stock</th>
+ <th class='table-success sanos'>Couleur</th>
+ <th class='table-success sanos'>Ajout</th>
+ <th class='table-success sanos'>Modif</th>
+ <th class='table-success sanos'>Bloqué</th>
+
+
+ <?php if(isset($this->session->connexion))
+ {
+    if($this->session->permission==1 || $this->session->permission==2)
+    {
+     ?>
+
+ <th class='table-success sanos'>Actions</th>
+
+ <?php
+    }
+}?>
          </tr>
     </thead>
     
@@ -80,13 +92,29 @@ foreach ($liste_produits as $row)  //Pour chaque valeur de liste_produits qui no
     <td><?=$row->pro_d_modif?></td>
     
     <td><?=$row->pro_bloque?></td>
-     
+     <?php if(isset($this->session->connexion))
+     {
+        if($this->session->permission==1 || $this->session->permission==2)
+        {
+         ?>
     <td> <a href='<?=base_url("index.php/produits/modif/$row->pro_id")?>'>
  <input type='button' id='modif'  class='btn btn-outline-success' value='Modifier'>
 </a> <br>
+<?php
+        }
+     }
+     if(isset($this->session->connexion))
+     {
+        if($this->session->permission==2)
+        {
+     ?>
 <a href='<?=base_url("index.php/produits/delete/$row->pro_id")?>'>
 <input type="submit" name="button2" value="Supprimer" class="btn btn-outline-danger" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette entrée?'));"></a> <!-- Au click on appelle un confirm qui si vrai envoie la page sur le script de suppression -->
 </td>
+<?php
+        }
+     }
+     ?>
 <?php	
 }
 	?>
@@ -95,8 +123,17 @@ foreach ($liste_produits as $row)  //Pour chaque valeur de liste_produits qui no
 
 
 </table>	
-<a href="<?=base_url("index.php/produits/ajout")?>"><input type="button" value="Ajouter"></a>
+<?php
+if(isset($this->session->permission))
+{
+    if($this->session->permission==1 || $this->session->permission==2)
+    {
+?>
+<a href="<?=base_url("index.php/produits/ajout")?>"><input class="btn btn-success" type="button" value="Ajouter"></a>
+<?php
+    }
+}?>
 </div>
-</body>
+
 
 <?php require("pieddepage.php");?>

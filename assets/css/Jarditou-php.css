@@ -1,5 +1,13 @@
 @charset "utf-8";
 
+@font-face {
+    font-family:'sans_brush_light_fontregular';
+    src: url('sanos-brush-light-font-webfont.woff2') format('woff2'),
+         url('sanos-brush-light-font-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 #caca {
 	
 	margin-top:130px;
@@ -17,11 +25,16 @@ form {margin-top:60px;}
 #titre{margin-top:60px;}
 #test{margin-top:100px;}
 
-#panier{padding-left:100px}
+
 .inline{
 	white-space:nowrap;
 }
 
-.dropdownpanier{
-	background-color:red;
+hr{
+	padding:2px;
+	border-color: #0275d8 ;
+}
+
+.sanos{
+    font-family:'sans_brush_light_fontregular';
 }
